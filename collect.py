@@ -174,6 +174,65 @@ def collect_reddit_sub(sub):
         print(f"Error fetching Reddit r/{sub} RSS fallback: {e}")
         return []
 
+def extract_amazon_price(html_content):
+    # Clean up excessive spacing for easier regex matching
+    html_clean = re.sub(r'\s+', ' ', html_content)
+    price = None
+    
+    # Priority 1: Look for dynamic deal/checkout price classes (avoiding basisPrice and a-text-price)
+    patterns = [
+        r'class="[^"]*(?:apexPriceToPay|priceToPay)[^"]*"[^>]*>\s*<span class="a-offscreen">\$([\d\.,]+)</span>',
+        r'<span class="[^"]*(?:apexPriceToPay|priceToPay)[^"]*"[^>]*>.*?\$([\d\.,]+)',
+        # Priority 2: Standard display price, excluding strike-through MSRP
+        r'<span class="a-price(?!.*a-text-price)(?!.*basisPrice)"[^>]*>\s*<span class="a-offscreen">\$([\d\.,]+)</span>',
+        # Priority 3: Whole and fraction price tag fallbacks
+        r'<span class="a-price-whole">([\d\.,]+)<span class="a-price-decimal">\.</span></span>\s*<span class="a-price-fraction">(\d{2})</span>'
+    ]
+    
+    for pattern in patterns:
+        match = re.search(pattern, html_clean)
+        if match:
+            if len(match.groups()) == 2:
+                price_str = f"{match.group(1)}.{match.group(2)}"
+            else:
+                price_str = match.group(1)
+            
+            # Remove commas or formatting characters
+            price_str = re.sub(r'[^\d\.]', '', price_str)
+            try:
+                price = float(price_str)
+                if price > 0:
+                    break
+            except ValueError:
+                continue
+                
+    if not price:
+        return None
+        
+    # Check for prominent coupons and apply them to the checkout price
+    # Dollar discount coupons (e.g., "Save $10 with coupon" or "Apply $10 coupon")
+    coupon_match = re.search(r'(?:Apply|Save)\s*\$(\d+(?:\.\d{2})?)\s*(?:with\s*)?coupon', html_content, re.IGNORECASE)
+    if coupon_match:
+        try:
+            coupon_val = float(coupon_match.group(1))
+            print(f"    Found dollar coupon discount: -${coupon_val}")
+            price -= coupon_val
+        except ValueError:
+            pass
+    else:
+        # Percentage discount coupons (e.g., "Save 10% with coupon")
+        pct_match = re.search(r'Save\s*(\d+)\s*%\s*(?:with\s*)?coupon', html_content, re.IGNORECASE)
+        if pct_match:
+            try:
+                pct_val = float(pct_match.group(1))
+                discount_amount = price * (pct_val / 100.0)
+                print(f"    Found percentage coupon discount: -{pct_val}% (-${discount_amount:.2f})")
+                price -= discount_amount
+            except ValueError:
+                pass
+                
+    return f"{price:.2f}"
+
 def main():
     slickdeals = collect_slickdeals()
     
@@ -206,16 +265,16 @@ def main():
         
     deduped_deals.sort(key=sort_key)
     
-    # Live Amazon Verification Step
+    # Live Amazon Verification & Price Scraping
     verified_deals = []
-    print("Starting Live Amazon Verification and Price Verification...")
+    print("Starting Multi-Subreddit Live Amazon Verification...")
     for deal in deduped_deals:
         if len(verified_deals) >= 12:
             break
             
         url = deal["link"]
-        print(f"Verifying: {deal['title'][:50]}... ({url})")
-        time.sleep(2.5) # sleep to avoid rate limits on Amazon
+        print(f"Verifying link and parsing live price: {deal['title'][:50]}... ({url})")
+        time.sleep(2.5) # rate limit buffer for Amazon
         
         html_content = ""
         success = False
@@ -230,40 +289,49 @@ def main():
             }
             try:
                 r = requests.get(url, headers=headers, timeout=12, allow_redirects=True)
+                text_lower = r.text.lower()
                 
-                # Check for dead link / error redirects / 404
-                if r.status_code == 404 or "/error/" in r.url or "/not-found" in r.url:
-                    print("  Failed: 404 or redirect to error page.")
+                is_dead = (r.status_code == 404 or 
+                    "we couldn't find that page" in text_lower or 
+                    "meet the dogs of amazon" in text_lower or 
+                    "SORRY" in r.text or # SORRY is capitalized on error pages
+                    "/error/" in r.url or 
+                    "/not-found" in r.url or
+                    "currently unavailable" in text_lower)
+                    
+                if is_dead:
+                    reasons = []
+                    if r.status_code == 404: reasons.append("404 status")
+                    if "we couldn't find that page" in text_lower: reasons.append("page not found text")
+                    if "meet the dogs of amazon" in text_lower: reasons.append("dogs of amazon text")
+                    if "SORRY" in r.text: reasons.append("sorry text")
+                    if "/error/" in r.url: reasons.append("/error/ in url")
+                    if "/not-found" in r.url: reasons.append("/not-found in url")
+                    if "currently unavailable" in text_lower: reasons.append("currently unavailable text")
+                    print(f"  Failed: Dead link, Amazon error, or Currently Unavailable. Reasons: {reasons}. Status: {r.status_code}, Length: {len(r.text)}, URL: {r.url}")
                     break
                     
-                if "captcha" in r.text.lower() or "validatecaptcha" in r.text.lower():
-                    print(f"  Attempt {attempt+1} got Captcha. Retrying...")
+                if "captcha" in text_lower or "validatecaptcha" in text_lower:
+                    print(f"  Attempt {attempt+1} got Captcha block. Retrying...")
                     time.sleep(2.0)
                     continue
-                    
-                if "currently unavailable" in r.text.lower():
-                    print("  Failed: Currently unavailable.")
-                    break
                     
                 if r.status_code == 200:
                     html_content = r.text
                     success = True
                     break
             except Exception as e:
-                print(f"  Attempt {attempt+1} exception: {e}")
+                print(f"  Attempt {attempt+1} error: {e}")
                 time.sleep(2.0)
                 
         if not success:
-            print("  Skipping: Failed to load page without captcha.")
+            print("  Skipping: Link failed status verification.")
             continue
             
-        # Parse price
-        prices = re.findall(r'<span class="a-price"[^>]*>\s*<span class="a-offscreen">\$([^<]+)</span>', html_content)
-        valid_prices = [p.replace(',', '') for p in prices if p]
-        price = valid_prices[0] if valid_prices else None
-        
+        # Price extraction
+        price = extract_amazon_price(html_content)
         if not price:
-            print("  Skipping: Price could not be found or parsed.")
+            print("  Skipping: Price could not be parsed or found on page.")
             continue
             
         print(f"  Verified! Live Price: ${price}")
