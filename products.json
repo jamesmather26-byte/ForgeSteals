@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Apple MacBook Pro 14\" (M4 Pro, 24GB RAM, 512GB SSD)",
+    "price": "$1,999.00",
+    "link": "https://www.amazon.com/dp/B0DGD9X4G3?tag=forgesteals-20",
+    "image": "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80",
+    "source": "Boutique Exclusive",
+    "description": "The ultimate portable workstation for creators and developers, powered by the blazing-fast M4 Pro chip with active thermal management, 24GB of unified memory, and a stunning 14.2-inch Liquid Retina XDR display."
+  },
+  {
+    "title": "Apple iPhone Air (128GB, Space Gray)",
+    "price": "$899.00",
+    "link": "https://www.amazon.com/dp/B0DGJC721H?tag=forgesteals-20",
+    "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80",
+    "source": "Boutique Exclusive",
+    "description": "Ultra-slim engineering meets incredible mobile performance. The iPhone Air introduces a gorgeous paper-thin design, an advanced titanium aerospace-grade frame, and the power of the A18 processor."
+  },
+  {
+    "title": "NVIDIA GeForce RTX 5060 Ti Gaming Build (Core i7, 32GB DDR5, 1TB SSD)",
+    "price": "$1,249.00",
+    "link": "https://www.amazon.com/dp/B0CXH5X6XG?tag=forgesteals-20",
+    "image": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=800&q=80",
+    "source": "Boutique Exclusive",
+    "description": "A high-performance pre-built desktop ready for next-generation PC gaming. Featuring the brand-new NVIDIA RTX 5060 Ti for real-time ray tracing, DLSS 4 frame generation, and liquid-cooled Intel Core i7."
+  },
+  {
+    "title": "ASUS ROG Swift OLED 27\" 1440p 240Hz Gaming Monitor",
+    "price": "$699.00",
+    "link": "https://www.amazon.com/dp/B0CC9G5CPH?tag=forgesteals-20",
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80",
+    "source": "Boutique Exclusive",
+    "description": "Experience peak desktop visuals with near-instantaneous 0.03ms response times, pure OLED black levels, and a buttery smooth 240Hz refresh rate. Fully compatible with G-SYNC and high-dynamic-range HDR10."
+  },
+  {
+    "title": "Sony WH-1000XM5 Noise Canceling Headphones",
+    "price": "$328.00",
+    "link": "https://www.amazon.com/Sony-WH-1000XM5-Canceling-Headphones-Hands-Free/dp/B09XS7JWHH?tag=forgesteals-20",
+    "image": "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=800&q=80",
+    "source": "Boutique Exclusive",
+    "description": "Over-ear wireless headphones featuring two processors controlling eight microphones for unmatched noise cancellation. Includes high-resolution audio support, 30-hour battery life, and a comfortable lightweight fit."
+  },
+  {
+    "title": "Samsung 990 PRO 2TB PCIe 4.0 M.2 SSD",
+    "price": "$159.00",
+    "link": "https://www.amazon.com/SAMSUNG-Internal-Expansion-MZ-V9P2T0B-AM/dp/B0BJHDK63Y?tag=forgesteals-20",
+    "image": "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=800&q=80",
+    "source": "Boutique Exclusive",
+    "description": "Blast through load times with blistering read and write speeds up to 7,450 MB/s. Optimized for professional workflows, 4K video editing, heavy developer environments, and high-performance PS5 storage expansion."
+  },
+  {
+    "title": "Logitech G Pro X Superlight 2 Gaming Mouse",
+    "price": "$139.00",
+    "link": "https://www.amazon.com/Logitech-SUPERLIGHT-Lightweight-Programmable-Compatible/dp/B0C32HMW4Y?tag=forgesteals-20",
+    "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=800&q=80",
+    "source": "Boutique Exclusive",
+    "description": "Weighing just 60 grams, the Superlight 2 is co-designed with top esports athletes. Features LIGHTFORCE hybrid optical-mechanical switches, USB-C fast charging, and the advanced HERO 2 sensor for sub-micron tracking."
+  }
+]
