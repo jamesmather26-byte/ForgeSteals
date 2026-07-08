@@ -14,7 +14,12 @@ if [ ! -f "index.html" ] || [ ! -s "index.html" ]; then
     exit 1
 fi
 
-echo "HTML verified ($(stat -f%s index.html) bytes)"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    SIZE=$(stat -f %z index.html)
+else
+    SIZE=$(stat -c %s index.html)
+fi
+echo "HTML verified ($SIZE bytes)"
 
 git add .
 git commit -m "Pivot to RSS feed for stable prices" || echo "No changes to commit"
