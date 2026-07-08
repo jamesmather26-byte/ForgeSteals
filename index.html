@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForgeSteals | Daily Curated Tech & Hardware Deals</title>
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Handpicked daily deals on top tech, GPUs, monitors, laptops, SSDs and gaming gear. ForgeSteals curation filters the noise so you get the best hardware discounts.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#f97316', // Orange
+                            600: '#ea580c',
+                            950: '#431407',
+                        },
+                        darkbg: '#0a0f1d',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-hover:hover {
+            box-shadow: 0 0 25px rgba(249, 115, 22, 0.25);
+        }
+        .text-glow {
+            text-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0f1d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f97316;
+        }
+    </style>
+</head>
+<body class="bg-darkbg text-slate-100 min-h-screen relative overflow-x-hidden font-sans selection:bg-brand-500 selection:text-white">
+
+    <!-- Glowing Background Blobs -->
+    <div class="absolute top-[-10%] left-[-10%] w-[60%] h-[50%] bg-brand-500/5 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute bottom-[20%] right-[-10%] w-[50%] h-[50%] bg-purple-500/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <!-- Required Affiliate Disclosure Message at the top -->
+    <div class="bg-slate-900/90 border-b border-slate-800/80 backdrop-blur-md py-2.5 px-4 text-center text-xs text-slate-400 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
+            <span class="inline-block px-1.5 py-0.5 rounded bg-brand-500/10 text-brand-500 font-semibold text-[10px] uppercase tracking-wider border border-brand-500/20">Disclosure</span>
+            <p>ForgeSteals is reader-supported. When you buy through our links, we may earn an affiliate commission at no extra cost to you.</p>
+        </div>
+    </div>
+
+    <!-- Header / Hero Section -->
+    <header class="py-12 md:py-16 border-b border-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Brand Logo / Name -->
+            <div class="inline-flex items-center gap-3 mb-4">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-600 to-amber-500 flex items-center justify-center shadow-lg shadow-brand-500/25">
+                    <!-- Anvil/Spark SVG Icon -->
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold font-display tracking-tight text-white">
+                    Forge<span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-amber-400">Steals</span>
+                </h1>
+            </div>
+            
+            <p class="max-w-xl mx-auto text-lg text-slate-400 font-light mt-2">
+                Daily curated hardware and accessory deals, hand-forged for gamers, creators, and enthusiasts.
+            </p>
+            
+            <div class="flex justify-center items-center gap-6 mt-6 text-sm text-slate-500">
+                <span class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    Updated Daily
+                </span>
+                <span class="border-l border-slate-800 h-4"></span>
+                <span>Verified Discounts | Hand-picked Hardware Deals</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Grid Section -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Section Title -->
+        <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+                <h2 class="text-2xl font-bold font-display text-white flex items-center gap-2">
+                    <span class="w-1.5 h-6 bg-brand-500 rounded"></span>
+                    Today's Curated Steals
+                </h2>
+                <p class="text-slate-400 text-sm mt-1">Handpicked best-value Amazon hardware discounts</p>
+            </div>
+            <div class="text-xs text-slate-500">
+                Showing the top curated deals (up to 12)
+            </div>
+        </div>
+
+        <!-- Cards Grid (Renders dynamically up to 12 if found) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            
+            <!-- Deal 1: Apple iPad Air M2 (Priority Boosted) -->
+            <div class="group bg-slate-900/40 border border-brand-500/20 rounded-2xl p-5 flex flex-col justify-between hover:border-brand-500/45 transition-all duration-300 transform hover:-translate-y-1 glow-hover relative overflow-hidden">
+                <!-- Priority Badge -->
+                <div class="absolute top-0 right-0 bg-brand-500 text-white font-extrabold text-[9px] uppercase tracking-widest px-3 py-1 rounded-bl-lg shadow-sm">
+                    Featured
+                </div>
+                <div>
+                    <!-- Badge & Price Row -->
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="px-2.5 py-0.5 rounded-full bg-brand-500/10 text-brand-500 font-semibold text-xs border border-brand-500/20">Tablet</span>
+                        <div class="px-3 py-1 rounded-lg bg-brand-500/15 border border-brand-500/30 text-brand-400 font-bold text-sm text-glow">
+                            $487.00
+                        </div>
+                    </div>
+                    <!-- Title -->
+                    <h3 class="text-base font-semibold text-white group-hover:text-brand-400 transition-colors duration-200 line-clamp-2 min-h-[3rem] font-display mb-3">
+                        Apple iPad Air 11" 128GB M2 (Blue, Wi-Fi 6E + 5G Cellular)
+                    </h3>
+                    <!-- Sales Pitch -->
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        Featuring Apple's blazing fast M2 chip and a gorgeous 11-inch Liquid Retina display, this model includes both Wi-Fi 6E and 5G cellular connectivity. At an impressive 34% off retail price, it is one of the absolute best Apple hardware deals you will find today.
+                    </p>
+                </div>
+                <!-- Action / Bottom Row -->
+                <div class="mt-4 pt-4 border-t border-slate-800/40 flex items-center justify-between gap-4">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-wide font-semibold">Verified Deal</span>
+                    <a href="https://www.amazon.com/dp/B0D3J61DQ4?tag=forgesteals-20" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-brand-500 text-white font-medium text-xs hover:bg-brand-600 transition-all duration-200 shadow-md shadow-brand-500/10 hover:shadow-brand-500/20">
+                        Shop Deal
+                    </a>
+                </div>
+            </div>
+
+            <!-- Deal 2: BOSGAME Mini PC -->
+            <div class="group bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 flex flex-col justify-between hover:border-brand-500/30 transition-all duration-300 transform hover:-translate-y-1 glow-hover">
+                <div>
+                    <!-- Badge & Price Row -->
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="px-2.5 py-0.5 rounded-full bg-brand-500/10 text-brand-500 font-semibold text-xs border border-brand-500/20">Mini PC</span>
+                        <div class="px-3 py-1 rounded-lg bg-brand-500/15 border border-brand-500/30 text-brand-400 font-bold text-sm text-glow">
+                            $358.00
+                        </div>
+                    </div>
+                    <!-- Title -->
+                    <h3 class="text-base font-semibold text-white group-hover:text-brand-400 transition-colors duration-200 line-clamp-2 min-h-[3rem] font-display mb-3">
+                        BOSGAME P3 Mix Mini PC: Ryzen 5 7640HS, 16GB DDR5, 512GB SSD
+                    </h3>
+                    <!-- Sales Pitch -->
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        Powered by a high-efficiency AMD Ryzen 5 7640HS processor and modern DDR5 memory, this ultra-compact PC delivers superb computing power in a tiny footprint. At just $358, it is a highly versatile option for a home entertainment center, home server, or space-saving office station.
+                    </p>
+                </div>
+                <!-- Action / Bottom Row -->
+                <div class="mt-4 pt-4 border-t border-slate-800/40 flex items-center justify-between gap-4">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-wide">Verified Deal</span>
+                    <a href="https://www.amazon.com/dp/B0FPC7WM2P?tag=forgesteals-20" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-brand-500 text-white font-medium text-xs hover:bg-brand-600 transition-all duration-200 shadow-md shadow-brand-500/10 hover:shadow-brand-500/20">
+                        Shop Deal
+                    </a>
+                </div>
+            </div>
+
+            <!-- Deal 3: PowerColor RX 9070 XT -->
+            <div class="group bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 flex flex-col justify-between hover:border-brand-500/30 transition-all duration-300 transform hover:-translate-y-1 glow-hover">
+                <div>
+                    <!-- Badge & Price Row -->
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="px-2.5 py-0.5 rounded-full bg-brand-500/10 text-brand-500 font-semibold text-xs border border-brand-500/20">GPU</span>
+                        <div class="px-3 py-1 rounded-lg bg-brand-500/15 border border-brand-500/30 text-brand-400 font-bold text-sm text-glow">
+                            $637.50
+                        </div>
+                    </div>
+                    <!-- Title -->
+                    <h3 class="text-base font-semibold text-white group-hover:text-brand-400 transition-colors duration-200 line-clamp-2 min-h-[3rem] font-display mb-3">
+                        PowerColor Hellhound AMD Radeon RX 9070 XT 16GB GDDR6
+                    </h3>
+                    <!-- Sales Pitch -->
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        This enthusiast-class graphics card features 16GB of GDDR6 memory and advanced thermal management to dominate AAA gaming. At $637.50, the Hellhound edition offers top-tier RDNA performance and runs exceptionally quiet under heavy loads.
+                    </p>
+                </div>
+                <!-- Action / Bottom Row -->
+                <div class="mt-4 pt-4 border-t border-slate-800/40 flex items-center justify-between gap-4">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-wide">Verified Deal</span>
+                    <a href="https://www.amazon.com/dp/B0CVVJV5LV?tag=forgesteals-20" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-brand-500 text-white font-medium text-xs hover:bg-brand-600 transition-all duration-200 shadow-md shadow-brand-500/10 hover:shadow-brand-500/20">
+                        Shop Deal
+                    </a>
+                </div>
+            </div>
+
+            <!-- Deal 4: ASUS RTX 5070 -->
+            <div class="group bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 flex flex-col justify-between hover:border-brand-500/30 transition-all duration-300 transform hover:-translate-y-1 glow-hover">
+                <div>
+                    <!-- Badge & Price Row -->
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="px-2.5 py-0.5 rounded-full bg-brand-500/10 text-brand-500 font-semibold text-xs border border-brand-500/20">GPU</span>
+                        <div class="px-3 py-1 rounded-lg bg-brand-500/15 border border-brand-500/30 text-brand-400 font-bold text-sm text-glow">
+                            $546.00
+                        </div>
+                    </div>
+                    <!-- Title -->
+                    <h3 class="text-base font-semibold text-white group-hover:text-brand-400 transition-colors duration-200 line-clamp-2 min-h-[3rem] font-display mb-3">
+                        ASUS SFF-Ready Prime GeForce RTX 5070 OC Edition 12GB GDDR7
+                    </h3>
+                    <!-- Sales Pitch -->
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        Built specifically to fit into compact ITX chassis, this SFF-Ready RTX 5070 card does not compromise on cooling or overclocking capabilities. For $546, it delivers elite GDDR7 gaming performance and cutting-edge DLSS 4 ray-tracing technology.
+                    </p>
+                </div>
+                <!-- Action / Bottom Row -->
+                <div class="mt-4 pt-4 border-t border-slate-800/40 flex items-center justify-between gap-4">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-wide">Verified Deal</span>
+                    <a href="https://www.amazon.com/ASUS-SFF-Ready-Graphics-2-5-Slot-Axial-tech/dp/B0DS6WPTLL?tag=forgesteals-20" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-brand-500 text-white font-medium text-xs hover:bg-brand-600 transition-all duration-200 shadow-md shadow-brand-500/10 hover:shadow-brand-500/20">
+                        Shop Deal
+                    </a>
+                </div>
+            </div>
+
+            <!-- Deal 5: INNOCN Monitor -->
+            <div class="group bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 flex flex-col justify-between hover:border-brand-500/30 transition-all duration-300 transform hover:-translate-y-1 glow-hover">
+                <div>
+                    <!-- Badge & Price Row -->
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="px-2.5 py-0.5 rounded-full bg-brand-500/10 text-brand-500 font-semibold text-xs border border-brand-500/20">Monitor</span>
+                        <div class="px-3 py-1 rounded-lg bg-brand-500/15 border border-brand-500/30 text-brand-400 font-bold text-sm text-glow">
+                            $399.99
+                        </div>
+                    </div>
+                    <!-- Title -->
+                    <h3 class="text-base font-semibold text-white group-hover:text-brand-400 transition-colors duration-200 line-clamp-2 min-h-[3rem] font-display mb-3">
+                        INNOCN 32A6V 32" Mini-LED 4K 160Hz HDR1000 Monitor
+                    </h3>
+                    <!-- Sales Pitch -->
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                        Boasting Mini-LED backlighting, HDR1000, and a stunning 160Hz 4K panel, this premium display offers ultra-deep contrast and vibrant colors. The added KVM switch and Type-C connectivity make it a steal at $399.99 for both productivity and gaming setups.
+                    </p>
+                </div>
+                <!-- Action / Bottom Row -->
+                <div class="mt-4 pt-4 border-t border-slate-800/40 flex items-center justify-between gap-4">
+                    <span class="text-[10px] text-slate-500 uppercase tracking-wide">Verified Deal</span>
+                    <a href="https://www.amazon.com/dp/B0CC9G5CPH?tag=forgesteals-20" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-brand-500 text-white font-medium text-xs hover:bg-brand-600 transition-all duration-200 shadow-md shadow-brand-500/10 hover:shadow-brand-500/20">
+                        Shop Deal
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950/60 backdrop-blur-md mt-20 py-8 text-center text-xs text-slate-500 relative">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <p>&copy; 2026 ForgeSteals. All rights reserved.</p>
+            <div class="flex justify-center gap-6">
+                <a href="#" class="hover:text-brand-500 transition-colors duration-200">Privacy Policy</a>
+                <a href="#" class="hover:text-brand-500 transition-colors duration-200">Terms of Service</a>
+                <a href="#" class="hover:text-brand-500 transition-colors duration-200">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
